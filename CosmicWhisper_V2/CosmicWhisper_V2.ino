@@ -113,6 +113,33 @@ void WEB()
             client.println("<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH\" crossorigin=\"anonymous\">");
             client.println("<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz\" crossorigin=\"anonymous\"></script>");
             client.println("</head>");
+            client.println("<body background=\"https://raw.githubusercontent.com/Prithwis-2023/MKR-WiFi1010/a415193bb827573cd8574d77bc9b78913157fcab/temp/SETI2.jpg\" style=\"background-size: cover;background-blend-mode: darken;\">");
+            client.println("<center><h1 class=\"display-1\" style=\"padding-top:5%; color:white; filter: brightness(50);\"><strong>Cosmic Whisper 2.0</strong></h1></center>");
+            client.println("<center><hr style=\"width: 50%; color: white;\"></center>");
+            client.println("<center style=\"padding-left: 31%; padding-top:1%\">");
+            
+            // first row 
+            client.println("<div class=\"btn-toolbar\" role=\"toolbar\" aria-label=\"Toolbar with button groups\">");
+            
+            client.println("<div class=\"btn-group me-2\" role=\"group\" aria-label=\"First group\">");
+            client.println("<button type=\"button\" class=\"btn btn-success btn-lg\" onclick=\"location.href=\'/A4\'\">Note A4</button>");
+            client.println("</div>");
+
+            client.println("<div class=\"btn-group me-2\" role=\"group\" aria-label=\"First group\">");
+            client.println("<button type=\"button\" class=\"btn btn-warning btn-lg\" onclick=\"location.href=\'/A#4\'\">Note A#4/Bb4</button>");
+            client.println("</div>");
+
+            client.println("<div class=\"btn-group me-2\" role=\"group\" aria-label=\"First group\">");
+            client.println("<button type=\"button\" class=\"btn btn-warning btn-lg\" onclick=\"location.href=\'B4\'\">Note B4</button>");
+            client.println("</div>");
+
+            client.println("<div class=\"btn-group me-2\" role=\"group\" aria-label=\"First group\">");
+            client.println("<button type=\"button\" class=\"btn btn-warning btn-lg\" onclick=\"location.href=\'C5\'\">Note C5</button>");
+            client.println("</div>");
+
+            client.println("</div>");
+
+            // second row
             
           }
         }
