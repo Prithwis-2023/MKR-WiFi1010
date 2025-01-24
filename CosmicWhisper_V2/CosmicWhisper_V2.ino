@@ -2,7 +2,7 @@
 #include "arduino_secrets.h"
 
 const int ledPin = 2; const int piezoPin = 8;
-int notes[] = {};
+float notes[] = {440, 466.16, 493.88, 523.25, 554.37, 587.33, 622.25, 659.25, 698.46, 739.99, 783.99, 830.61};
 
 char ssid[] = SECRET_SSID;
 char pass[] = SECRET_PASS;
@@ -140,10 +140,141 @@ void WEB()
             client.println("</div>");
 
             // second row
+            client.println("<div class=\"btn-toolbar\" role=\"toolbar\" aria-label=\"Toolbar with button groups\">");
             
+            client.println("<div class=\"btn-group me-2\" role=\"group\" aria-label=\"First group\">");
+            client.println("<button type=\"button\" class=\"btn btn-success btn-lg\" onclick=\"location.href=\'/C#5\'\">Note C#5/Db5</button>");
+            client.println("</div>");
+
+            client.println("<div class=\"btn-group me-2\" role=\"group\" aria-label=\"First group\">");
+            client.println("<button type=\"button\" class=\"btn btn-warning btn-lg\" onclick=\"location.href=\'/D5\'\">Note D5</button>");
+            client.println("</div>");
+
+            client.println("<div class=\"btn-group me-2\" role=\"group\" aria-label=\"First group\">");
+            client.println("<button type=\"button\" class=\"btn btn-warning btn-lg\" onclick=\"location.href=\'D#5\'\">Note D#5/Eb5</button>");
+            client.println("</div>");
+
+            client.println("<div class=\"btn-group me-2\" role=\"group\" aria-label=\"First group\">");
+            client.println("<button type=\"button\" class=\"btn btn-warning btn-lg\" onclick=\"location.href=\'E5\'\">Note E5</button>");
+            client.println("</div>");
+
+            client.println("</div>");
+
+            // third row
+            client.println("<div class=\"btn-toolbar\" role=\"toolbar\" aria-label=\"Toolbar with button groups\">");
+            
+            client.println("<div class=\"btn-group me-2\" role=\"group\" aria-label=\"First group\">");
+            client.println("<button type=\"button\" class=\"btn btn-success btn-lg\" onclick=\"location.href=\'/F5\'\">Note F5</button>");
+            client.println("</div>");
+
+            client.println("<div class=\"btn-group me-2\" role=\"group\" aria-label=\"First group\">");
+            client.println("<button type=\"button\" class=\"btn btn-warning btn-lg\" onclick=\"location.href=\'/F#5\'\">Note F#5</button>");
+            client.println("</div>");
+
+            client.println("<div class=\"btn-group me-2\" role=\"group\" aria-label=\"First group\">");
+            client.println("<button type=\"button\" class=\"btn btn-warning btn-lg\" onclick=\"location.href=\'G5\'\">Note G5</button>");
+            client.println("</div>");
+
+            client.println("<div class=\"btn-group me-2\" role=\"group\" aria-label=\"First group\">");
+            client.println("<button type=\"button\" class=\"btn btn-warning btn-lg\" onclick=\"location.href=\'G#5\'\">Note G#5/Ab5</button>");
+            client.println("</div>");
+
+            client.println("</div>");
+
+            break;
           }
+          else
+          {
+            currentLine = "";
+          }
+        }
+
+        else if (c != '\r')
+        {
+          currentLine += c;
+        }
+
+        if (currentLine.endsWith("GET /A4"))
+        {
+          digitalWrite(ledPin, HIGH);
+          playTone(notes[0], 500);
+        }
+        if (currentLine.endsWith("GET /A#4"))
+        {
+          digitalWrite(ledPin, HIGH);
+          playTone(notes[1], 500);
+        }
+        if (currentLine.endsWith("GET /B4"))
+        {
+          digitalWrite(ledPin, HIGH);
+          playTone(notes[2], 500);
+          digitalWrite(ledPin, LOW);
+        }
+        if (currentLine.endsWith("GET /C5"))
+        {
+          digitalWrite(ledPin, HIGH);
+          playTone(notes[3], 500);
+          digitalWrite(ledPin, LOW);
+        }
+        if (currentLine.endsWith("GET /C#5"))
+        {
+          digitalWrite(ledPin, HIGH);
+          playTone(notes[4], 500);
+          digitalWrite(ledPin, LOW);
+        }
+        if (currentLine.endsWith("GET /D5"))
+        {
+          digitalWrite(ledPin, HIGH);
+          playTone(notes[5], 500);
+          digitalWrite(ledPin, LOW);
+        }
+        if (currentLine.endsWith("GET /D#5"))
+        {
+          digitalWrite(ledPin, HIGH);
+          playTone(notes[6], 500);
+          digitalWrite(ledPin, LOW);
+        }
+        if (currentLine.endsWith("GET /E5"))
+        {
+          digitalWrite(ledPin, HIGH);
+          playTone(notes[7], 500);
+          digitalWrite(ledPin, LOW);
+        }
+        if (currentLine.endsWith("GET /F5"))
+        {
+          digitalWrite(ledPin, HIGH);
+          playTone(notes[8], 500);
+          digitalWrite(ledPin, LOW);
+        }
+        if (currentLine.endsWith("GET /F#5"))
+        {
+          digitalWrite(ledPin, HIGH);
+          playTone(notes[9], 500);
+          digitalWrite(ledPin, LOW);
+        }
+        if (currentLine.endsWith("GET /G5"))
+        {
+          digitalWrite(ledPin, HIGH);
+          playTone(notes[10], 500);
+          digitalWrite(ledPin, LOW);
+        }
+        if (currentLine.endsWith("GET /G#5"))
+        {
+          digitalWrite(ledPin, HIGH);
+          playTone(notes[11], 500);
+          digitalWrite(ledPin, LOW);
         }
       }
     }
+
+    client.stop();
+    Serial.println("Client Disconnected");
   }
+}
+
+void playTone(float note, int duration)
+{
+  tone(piezoPin, note, duration);
+  delay(duration);
+  noTone(piezoPin);
 }
